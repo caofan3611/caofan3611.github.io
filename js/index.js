@@ -9,6 +9,4 @@ setInterval(function(v){
               v.innerText+='.';
       }
 },233,a);
-      }
-      }
-})
+//qwq
