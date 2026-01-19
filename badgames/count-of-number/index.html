@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title></title>
+      </head>
+
+      <body>
+      <script>
+      function main(level_){
+        let level=level_;
+          let ans=Math.floor(Math.random()*233)%9;
+            let sum=0;
+              console.log(ans);
+                document.body.innerHTML='';
+                  document.body.appendChild(document.createTextNode('欢迎来到第'+level+'关'));
+                    let h1=document.createElement('h1');
+                      h1.innerText='请找出里面数字'+ans+'的个数(把你的答案填在下面的输入框里)';
+                        let nums=new Array();
+                          for(let i=0;i<Math.floor(level/3)+1;i++){
+                              let num=Math.floor(Math.random()*114514)%9;
+                                  if(num==ans){
+                                        sum++;
+                                            }
+                                                nums.push(num);
+                                                  }
+                                                    document.body.appendChild(h1);
+                                                      let input=document.createElement('input');
+                                                        input.type='number';
+                                                          document.body.appendChild(input);
+                                                            input.style.backgroundColor='white';
+                                                              let btn=document.createElement('button');
+                                                                document.body.appendChild(btn);
+                                                                  btn.innerText='确定';
+                                                                    btn.style.backgroundColor='white';
+                                                                      document.body.appendChild(document.createElement('br'));
+                                                                        document.body.appendChild(document.createTextNode('那一串数字:'));
+                                                                          document.body.appendChild(document.createElement('br'));
+                                                                            for(let a=0;a<nums.length;a++){
+                                                                                document.body.appendChild(document.createTextNode(nums[a]));
+                                                                                    if(a!==0&&a%20==0){
+                                                                                          document.body.appendChild(document.createElement('br'));
+                                                                                              }
+                                                                                                }
+                                                                                                  btn.onclick=function(){
+                                                                                                      if(input.value==sum){
+                                                                                                            document.body.innerHTML=' ';
+                                                                                                                  let h1green=document.createElement('h1');
+                                                                                                                        h1green.style.color='green';
+                                                                                                                              h1green.innerText='挑战成功!1.5秒后进入下一关'
+                                                                                                                                    sum=0;
+                                                                                                                                          document.body.appendChild(h1green);
+                                                                                                                                                localStorage.setItem('count-of-number_level',level);
+                                                                                                                                                      setTimeout(function(){main(++level)},1500);
+                                                                                                                                                          }else{
+                                                                                                                                                                document.body.innerHTML=' ';
+                                                                                                                                                                      let h1green=document.createElement('h1');
+                                                                                                                                                                            h1green.style.color='red';
+                                                                                                                                                                                  h1green.innerText='挑战失败,2秒后重置(p.s. 本题正确答案为'+sum+')';
+                                                                                                                                                                                        document.body.appendChild(h1green);
+                                                                                                                                                                                              sum=0;
+                                                                                                                                                                                                    setTimeout(function(){main(level)},2000);
+                                                                                                                                                                                                        }
+                                                                                                                                                                                                          }
+                                                                                                                                                                                                            for(let i=0;i<Math.floor(level*10);i++){
+                                                                                                                                                                                                                document.body.appendChild(document.createElement('br'));
+                                                                                                                                                                                                                  }
+                                                                                                                                                                                                                  };
+                                                                                                                                                                                                                  if (localStorage.getItem('count-of-number_level')) {
+                                                                                                                                                                                                                    main(localStorage.getItem('count-of-number_level'));
+                                                                                                                                                                                                                    }else{
+                                                                                                                                                                                                                      main(1);
+                                                                                                                                                                                                                      }
+                                                                                                                                                                                                                      </script>
+                                                                                                                                                                                                                      </body>
+
+                                                                                                                                                                                                                      </html>
